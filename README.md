@@ -4,7 +4,7 @@ Automated Proteomics quality control package
 # Table of Contents
 1. [Package description](#head1)
 2. [Prerequisites](#head2)
-3. [General setup AutoQCSoftware](#head3)
+3. [Initialize folder structure and parameter files](#head3)
 4. [SampleType setup](#head4)
 
 # <a name="head1"></a>A Package description
@@ -52,7 +52,7 @@ It consists of three R-scripts:
 *	Client computer, from which data can be interactivally und simultanly inspected net to be connected in the same local area network and access the data via browser.
 
 
-# <a name="head3"></a>A General setup AutoQCSoftware
+# <a name="head3"></a>A Initialize folder structure and parameter files
 
 1.  Create an empty folder that will store all data created by the software on a local hard-drive. This folder will henceforth be referred to as "DataFolder"
 ```
@@ -83,8 +83,6 @@ D:/QC-software/
       ***Make sure to keep format as .txt and don’t change the file name.***
 
 
-# <a name="head4"></a>A SampleType setup
-
 ## Setting up MaxQuant for each individual SampleType
 
 1.  Go to the raw file type-specific sub-folder (e.g.“D:/QC-software/BSA”). It contains a dummy.raw file, an PeptidesOfInterest.txt file and an “borders.txt” file which need to be configured.
@@ -98,6 +96,26 @@ D:/QC-software/
     +	Save the changed parameter file by the “Save parameters” button using default location and name.
     
     +	Close MaxQuant.
+    
+
+# <a name="head4"></a>A Analyze first raw file
+
+1. Drag and drop a first raw file in the dataFolder.
+
+2. Open the AutoQC.R script in RStudio and run the code by hitting the "Run App" button
+
+3. Specify the DataFolder in the pop-up window
+
+4. Track the raw file processing in the R-Studio console and wait until it's finished. The console should print the following statements:
+
+```
+Found file Orbi1_160130_BSA_01*.raw
+Start maxquant analysis of file Orbi1_160130_BSA_01
+Finished MQ search file Orbi1_160130_BSA_01
+Finished writing QC-pdf for Orbi1_160130_BSA_01
+No more raw files to process; check again in 2 min
+```
+5. 
     
 ## Configuring the PeptidesOfInterest.txt and borders.txt
 
