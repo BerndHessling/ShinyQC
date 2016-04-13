@@ -2,12 +2,12 @@
 Automated Proteomics quality control package
 
 # Table of Contents
-1. [Package description](https://github.com/BerndHessling/ShinyQC/blob/readme_edits/README.md#package-description)
-2. [Prerequisites](# Prerequisites)
-3. [General setup AutoQCSoftware](# General setup AutoQCSoftware)
-4. [SampleType setup](# SampleType setup)
+1. [Package description](#head1)
+2. [Prerequisites](#head2)
+3. [General setup AutoQCSoftware](#head3)
+4. [SampleType setup](#head4)
 
-# Package description
+# <a name="head1"></a>A Package description
 
 
 This package allows the automatic analysis and visualization of proteomics standard samples. ID rates as well as certain parameter can be monitored over time for multiple LC-MS platforms in an interactive web application. The software supports any kind of peptide standard and is highly flexible.
@@ -21,7 +21,7 @@ It consists of three R-scripts:
 3.	runAutoQCShiny.R: Interactive web application (Shiny app), to visualize data
 
 
-# Prerequisites
+# <a name="head2"></a>A Prerequisites
 
 
 *  The hosting computer needs to have a running version of [MaxQuant](http://www.coxdocs.org/doku.php?id=maxquant:common:download_and_installation) (version number should not matter, but needs to remain unchanged over the analyzing different raw files of same sample type).
@@ -52,7 +52,7 @@ It consists of three R-scripts:
 *	Client computer, from which data can be interactivally und simultanly inspected net to be connected in the same local area network and access the data via browser.
 
 
-# General setup AutoQCSoftware
+# <a name="head3"></a>A General setup AutoQCSoftware
 
 1.  Create an empty folder that will store all data created by the software on a local hard-drive. This folder will henceforth be referred to as "DataFolder"
 ```
@@ -83,7 +83,7 @@ D:/QC-software/
       ***Make sure to keep format as .txt and don’t change the file name.***
 
 
-# SampleType setup
+# <a name="head4"></a>A SampleType setup
 
 ## Setting up MaxQuant for each individual SampleType
 
