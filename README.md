@@ -58,9 +58,9 @@ It consists of three R-scripts:
 # <a name="head3"></a> Initialize folder structure and parameter files
 
 1.  Create an empty folder that will store all data created by the software on a local hard-drive. This folder will henceforth be referred to as "DataFolder"
-```
-D:/QC-software/
-```
+    ```
+    D:/QC-software/
+    ```
   
 2.	Create subfolder for every sample type that should be analyzed by the software. The folder name is the identifier for sorting raw files in the correct subfoder and must match exactly to a unique identifier Tag in the .raw file name (see Prerequisites: raw file naming convention). These subfolders will henceforth be referred to as “SampleType folders”.
       
