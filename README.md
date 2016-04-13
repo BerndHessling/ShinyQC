@@ -8,6 +8,7 @@ Automated Proteomics quality control package
 4. [Setting up MaxQuant for each SampleType](#head4)
 5. [Analyze first raw file for each SampleType](#head5)
 6. [Setting up individual parameter files for each SampleType] (#head6)
+7. [Starting the Shiny app](#head7)
 
 # <a name="head1"></a> Package description
 
@@ -149,3 +150,31 @@ The SampleType folders contain two files which need to be configured, the "Pepti
     +	As these values can differ between different instrument types the according instrument needs to be specified in the “Instrument” column.
     
     +	Make sure to keep format as .txt and don’t change the file name.
+
+
+# <a name="head7"></a> Starting the Shiny app
+
+1. Open another instance of R-Studio and open the runAutoQCShiny.R.
+
+2. Run the app and specify the the SampleType folder,which should be inspected, in the first pop-up window.
+
+    ```
+    D:/QC-software/BSA
+    ```
+    
+3. Specify the MaxQuant/bin folder in the second pop-up window.
+
+    ```
+    D:/MaxQuant_1.5.3.8/MaxQuant/bin
+    ```
+    
+4. Interactively inspect your data and create logbook entries for the instruments.
+
+5. Connect the the software from other computer in the same LAN by calling the IP adress of the hosting pc and the port 3168 in browser.
+
+    ```
+    //192.168.0.1:3168
+    ```
+    
+6. Update the data with newly analyzed raw files by hitting the "update app button" from host or client computers.
+
