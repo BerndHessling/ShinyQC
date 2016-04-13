@@ -85,7 +85,7 @@ D:/QC-software/
       ***Make sure to keep format as .txt and don’t change the file name.***
 
 
-# <a name="head5"></a> Setting up MaxQuant for each SampleType
+# <a name="head4"></a> Setting up MaxQuant for each SampleType
 
 1.  Go to the raw file type-specific sub-folder (e.g.“D:/QC-software/BSA”). It contains a dummy.raw file, an PeptidesOfInterest.txt file and an “borders.txt” file which need to be configured.
 
