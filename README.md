@@ -67,7 +67,7 @@ It consists of three R-scripts:
     ```
     Orbi_*_BSA_*.raw
     ```
-    ***needs a sample type folder named:***
+    needs a sample type folder named:
     ```
     D:/QC-software/BSA
     ```
