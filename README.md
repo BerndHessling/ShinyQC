@@ -4,10 +4,13 @@ Automated Proteomics quality control package
 # Table of Contents
 1. [Package description](#head1)
 2. [Prerequisites](#head2)
-3. [General setup AutoQCSoftware](#head3)
-4. [SampleType setup](#head4)
+3. [Initialize folder structure and parameter files](#head3)
+4. [Setting up MaxQuant for each SampleType](#head4)
+5. [Analyze first raw file for each SampleType](#head5)
+6. [Setting up individual parameter files for each SampleType] (#head6)
+7. [Starting the Shiny app](#head7)
 
-# <a name="head1"></a>A Package description
+# <a name="head1"></a> Package description
 
 
 This package allows the automatic analysis and visualization of proteomics standard samples. ID rates as well as certain parameter can be monitored over time for multiple LC-MS platforms in an interactive web application. The software supports any kind of peptide standard and is highly flexible.
@@ -21,7 +24,7 @@ It consists of three R-scripts:
 3.	runAutoQCShiny.R: Interactive web application (Shiny app), to visualize data
 
 
-# <a name="head2"></a>A Prerequisites
+# <a name="head2"></a> Prerequisites
 
 
 *  The hosting computer needs to have a running version of [MaxQuant](http://www.coxdocs.org/doku.php?id=maxquant:common:download_and_installation) (version number should not matter, but needs to remain unchanged over the analyzing different raw files of same sample type).
@@ -52,19 +55,19 @@ It consists of three R-scripts:
 *	Client computer, from which data can be interactivally und simultanly inspected net to be connected in the same local area network and access the data via browser.
 
 
-# <a name="head3"></a>A General setup AutoQCSoftware
+# <a name="head3"></a> Initialize folder structure and parameter files
 
 1.  Create an empty folder that will store all data created by the software on a local hard-drive. This folder will henceforth be referred to as "DataFolder"
-```
-D:/QC-software/
-```
+    ```
+    D:/QC-software/
+    ```
   
 2.	Create subfolder for every sample type that should be analyzed by the software. The folder name is the identifier for sorting raw files in the correct subfoder and must match exactly to a unique identifier Tag in the .raw file name (see Prerequisites: raw file naming convention). These subfolders will henceforth be referred to as “SampleType folders”.
       
     ```
     Orbi_*_BSA_*.raw
     ```
-    ***needs a sample type folder named:***
+    needs a sample type folder named:
     ```
     D:/QC-software/BSA
     ```
@@ -83,9 +86,7 @@ D:/QC-software/
       ***Make sure to keep format as .txt and don’t change the file name.***
 
 
-# <a name="head4"></a>A SampleType setup
-
-## Setting up MaxQuant for each individual SampleType
+# <a name="head4"></a> Setting up MaxQuant for each SampleType
 
 1.  Go to the raw file type-specific sub-folder (e.g.“D:/QC-software/BSA”). It contains a dummy.raw file, an PeptidesOfInterest.txt file and an “borders.txt” file which need to be configured.
 
@@ -99,22 +100,81 @@ D:/QC-software/
     
     +	Close MaxQuant.
     
-## Configuring the PeptidesOfInterest.txt and borders.txt
 
-**These two files should be configured after the first analysis of a SampleType specific raw file:**
+# <a name="head5"></a> Analyze first raw file for each SampleType
 
+1. Drag and drop a one raw file for each SampleType in the DataFolder.
+
+2. Open the AutoQC.R script in RStudio and run the code by hitting the "Run App" button
+
+3. Specify the DataFolder in the pop-up window
+
+4. Track the raw file processing in the R-Studio console and wait until it's finished. The console should print the following statements:
+
+    ```
+    Found file Orbi1_160130_BSA_01.raw
+    Start maxquant analysis of file Orbi1_160130_BSA_01
+    Finished MQ search file Orbi1_160130_BSA_01
+    Finished writing QC-pdf for Orbi1_160130_BSA_01
+    No more raw files to process; check again in 2 min
+    ```
+
+# <a name="head6"></a> Setting up individual parameter files for each SampleType
+
+The SampleType folders contain two files which need to be configured, the "PeptidesOfInterest.txt" and the "borders.txt".
 
 1.  PeptidesOfInterest.txt:
 
     +	The PeptidesOfInterest.txt file contains peptides that can be manually controlled over all analyzed runs to check e.g. retention time, score or intensity of these peptides.
-    +	To specify these peptides copy the Modified sequence and Charge from the evidence.txt file in that file.
+    
+    +	To specify these peptides copy the Modified sequence and Charge from the evidence.txt file in PeptidesOfInterest.txt file.
+    
+    +   evidence.txt files can be found after a first MaxQuant analysis of a raw file in the folder:
+    
+    ```
+    D:/QC-software/BSA/Orbi1_160130_BSA_01
+    ```
+    
     +	Make sure to choose peptides that are well suited for your quality control (e.g. avoid peptides bearing Methionine which can be oxidized and therefore vary in intensity, choose peptides occurring in only one charge state…).
+    
     +	Make sure to keep format as .txt and don’t change the file name.
 
 2.	borders.txt
 
     +	The borders.txt file shows all column names of the MaxQuant evidence.txt file as rows.
+    
     +	If the “Include” column shows “TRUE” this data type can be plotted in the software.
+    
     +	The three value columns (“High”, “Low” and “Optimal”) are optional values. If specified these values will be shown in the plot as vertical line in red (“Low” and “High”) or green (“optimal line”).
+    
     +	As these values can differ between different instrument types the according instrument needs to be specified in the “Instrument” column.
+    
     +	Make sure to keep format as .txt and don’t change the file name.
+
+
+# <a name="head7"></a> Starting the Shiny app
+
+1. Open another instance of R-Studio and open the runAutoQCShiny.R.
+
+2. Run the app and specify the the SampleType folder,which should be inspected, in the first pop-up window.
+
+    ```
+    D:/QC-software/BSA
+    ```
+    
+3. Specify the MaxQuant/bin folder in the second pop-up window.
+
+    ```
+    D:/MaxQuant_1.5.3.8/MaxQuant/bin
+    ```
+    
+4. Interactively inspect your data and create logbook entries for the instruments.
+
+5. Connect the the software from other computer in the same LAN by calling the IP adress of the hosting pc and the port 3168 in browser.
+
+    ```
+    //192.168.0.1:3168
+    ```
+    
+6. Update the data with newly analyzed raw files by hitting the "update app button" from host or client computers.
+
