@@ -2,7 +2,7 @@
 Automated Proteomics quality control package
 
 # Table of Contents
-1. [Package description](# Package description)
+1. [Package description](https://github.com/BerndHessling/ShinyQC/blob/readme_edits/README.md#package-description)
 2. [Prerequisites](# Prerequisites)
 3. [General setup AutoQCSoftware](# General setup AutoQCSoftware)
 4. [SampleType setup](# SampleType setup)
