@@ -24,7 +24,7 @@ It consists of three R-scripts:
 # Prerequisites
 
 
-*  The hosting computer needs to have a running version of [MaxQuant](http://www.coxdocs.org/doku.php?id=maxquant:common:download_and_installation) (version number should not matter, but needs to remain unchanged during over different raw files of same sample type).
+*  The hosting computer needs to have a running version of [MaxQuant](http://www.coxdocs.org/doku.php?id=maxquant:common:download_and_installation) (version number should not matter, but needs to remain unchanged over the analyzing different raw files of same sample type).
 
 *	[R](https://cran.r-project.org/bin/windows/base/) needs to be installed (package was developed for version 3.2.4).
 
