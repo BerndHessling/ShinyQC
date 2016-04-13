@@ -7,6 +7,7 @@ Automated Proteomics quality control package
 3. [Initialize folder structure and parameter files](#head3)
 4. [Setting up MaxQuant for each SampleType](#head4)
 5. [Analyze first raw file for each SampleType](#head5)
+6. [Setting up individual parameter files for each SampleType] (#head6)
 
 # <a name="head1"></a> Package description
 
@@ -117,7 +118,7 @@ Finished writing QC-pdf for Orbi1_160130_BSA_01
 No more raw files to process; check again in 2 min
 ```
 
-# <a name="head5"></a> Setting up individual parameter files for each SampleType
+# <a name="head6"></a> Setting up individual parameter files for each SampleType
 
 The SampleType folders contain two files which need to be configured, the "PeptidesOfInterest.txt" and the "borders.txt".
 
