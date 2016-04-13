@@ -124,20 +124,27 @@ The SampleType folders contain two files which need to be configured, the "Pepti
 1.  PeptidesOfInterest.txt:
 
     +	The PeptidesOfInterest.txt file contains peptides that can be manually controlled over all analyzed runs to check e.g. retention time, score or intensity of these peptides.
-    +	To specify these peptides copy the Modified sequence and Charge from the evidence.txt file in that file.
+    
+    +	To specify these peptides copy the Modified sequence and Charge from the evidence.txt file in PeptidesOfInterest.txt file.
+    
+    +   evidence.txt files can be found after a first MaxQuant analysis of a raw file in the folder:
     
     ```
-    evidence.txt files can be found after a first MaxQuant analysis of a raw file in the folder:
     D:/QC-software/BSA/Orbi1_160130_BSA_01.raw
     ```
     
     +	Make sure to choose peptides that are well suited for your quality control (e.g. avoid peptides bearing Methionine which can be oxidized and therefore vary in intensity, choose peptides occurring in only one charge state…).
+    
     +	Make sure to keep format as .txt and don’t change the file name.
 
 2.	borders.txt
 
     +	The borders.txt file shows all column names of the MaxQuant evidence.txt file as rows.
+    
     +	If the “Include” column shows “TRUE” this data type can be plotted in the software.
+    
     +	The three value columns (“High”, “Low” and “Optimal”) are optional values. If specified these values will be shown in the plot as vertical line in red (“Low” and “High”) or green (“optimal line”).
+    
     +	As these values can differ between different instrument types the according instrument needs to be specified in the “Instrument” column.
+    
     +	Make sure to keep format as .txt and don’t change the file name.
