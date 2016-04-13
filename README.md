@@ -1,6 +1,12 @@
 # ShinyQC
 Automated Proteomics quality control package
 
+# Table of Contents
+1. [Package description](#Package description)
+2. [Prerequisites](#Prerequisites)
+3. [General setup AutoQCSoftware](#General setup AutoQCSoftware)
+4. [SampleType setup](#SampleType setup)
+
 # Package description
 
 
