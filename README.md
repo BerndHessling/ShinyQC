@@ -10,7 +10,7 @@ Automated Proteomics quality control package
 6. [Setting up individual parameter files for each SampleType] (#head6)
 7. [Starting the Shiny app](#head7)
 
-# <a name="head1"></a> Package description
+# <a name="head1"></a>Package description
 
 
 This package allows the automatic analysis and visualization of proteomics standard samples. ID rates as well as certain parameter can be monitored over time for multiple LC-MS platforms in an interactive web application. The software supports any kind of peptide standard and is highly flexible.
@@ -24,7 +24,7 @@ It consists of three R-scripts:
 3.	runAutoQCShiny.R: Interactive web application (Shiny app), to visualize data
 
 
-# <a name="head2"></a> Prerequisites
+# <a name="head2"></a>Prerequisites
 
 
 *  The hosting computer needs to have a running version of [MaxQuant](http://www.coxdocs.org/doku.php?id=maxquant:common:download_and_installation) (version number should not matter, but needs to remain unchanged over the analyzing different raw files of same sample type).
@@ -55,7 +55,7 @@ It consists of three R-scripts:
 *	Client computer, from which data can be interactivally und simultanly inspected net to be connected in the same local area network and access the data via browser.
 
 
-# <a name="head3"></a> Initialize folder structure and parameter files
+# <a name="head3"></a>Initialize folder structure and parameter files
 
 1.  Create an empty folder that will store all data created by the software on a local hard-drive. This folder will henceforth be referred to as "DataFolder"
     ```
@@ -119,7 +119,7 @@ It consists of three R-scripts:
     No more raw files to process; check again in 2 min
     ```
 
-# <a name="head6"></a> Setting up individual parameter files for each SampleType
+# <a name="head6"></a>Setting up individual parameter files for each SampleType
 
 The SampleType folders contain two files which need to be configured, the "PeptidesOfInterest.txt" and the "borders.txt".
 
@@ -152,7 +152,7 @@ The SampleType folders contain two files which need to be configured, the "Pepti
     +	Make sure to keep format as .txt and don’t change the file name.
 
 
-# <a name="head7"></a> Starting the Shiny app
+# <a name="head7"></a>Starting the Shiny app
 
 1. Open another instance of R-Studio and open the runAutoQCShiny.R.
 
