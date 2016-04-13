@@ -111,13 +111,13 @@ It consists of three R-scripts:
 
 4. Track the raw file processing in the R-Studio console and wait until it's finished. The console should print the following statements:
 
-```
-Found file Orbi1_160130_BSA_01.raw
-Start maxquant analysis of file Orbi1_160130_BSA_01
-Finished MQ search file Orbi1_160130_BSA_01
-Finished writing QC-pdf for Orbi1_160130_BSA_01
-No more raw files to process; check again in 2 min
-```
+    ```
+    Found file Orbi1_160130_BSA_01.raw
+    Start maxquant analysis of file Orbi1_160130_BSA_01
+    Finished MQ search file Orbi1_160130_BSA_01
+    Finished writing QC-pdf for Orbi1_160130_BSA_01
+    No more raw files to process; check again in 2 min
+    ```
 
 # <a name="head6"></a> Setting up individual parameter files for each SampleType
 
