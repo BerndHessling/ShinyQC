@@ -130,7 +130,7 @@ The SampleType folders contain two files which need to be configured, the "Pepti
     +   evidence.txt files can be found after a first MaxQuant analysis of a raw file in the folder:
     
     ```
-    D:/QC-software/BSA/Orbi1_160130_BSA_01.raw
+    D:/QC-software/BSA/Orbi1_160130_BSA_01
     ```
     
     +	Make sure to choose peptides that are well suited for your quality control (e.g. avoid peptides bearing Methionine which can be oxidized and therefore vary in intensity, choose peptides occurring in only one charge state…).
