@@ -2,13 +2,13 @@
 Automated Proteomics quality control package
 
 # Table of Contents
-1. [Package description](#head1)
-2. [Prerequisites](#head2)
-3. [Initialize folder structure and parameter files](#head3)
-4. [Setting up MaxQuant for each SampleType](#head4)
-5. [Analyze first raw file for each SampleType](#head5)
-6. [Setting up individual parameter files for each SampleType] (#head6)
-7. [Starting the Shiny app](#head7)
+[Package description](#head1)
+[Prerequisites](#head2)
+[Initialize folder structure and parameter files](#head3)
+[Setting up MaxQuant for each SampleType](#head4)
+[Analyze first raw file for each SampleType](#head5)
+[Setting up individual parameter files for each SampleType] (#head6)
+[Starting the Shiny app](#head7)
 
 # <a name="head1"></a>Package description
 
