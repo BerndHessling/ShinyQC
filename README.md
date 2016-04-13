@@ -5,9 +5,10 @@ Automated Proteomics quality control package
 1. [Package description](#head1)
 2. [Prerequisites](#head2)
 3. [Initialize folder structure and parameter files](#head3)
-4. [SampleType setup](#head4)
+4. [Setting up MaxQuant for each SampleType](#head4)
+5. [Analyze first raw file for each SampleType](#head5)
 
-# <a name="head1"></a>A Package description
+# <a name="head1"></a> Package description
 
 
 This package allows the automatic analysis and visualization of proteomics standard samples. ID rates as well as certain parameter can be monitored over time for multiple LC-MS platforms in an interactive web application. The software supports any kind of peptide standard and is highly flexible.
@@ -21,7 +22,7 @@ It consists of three R-scripts:
 3.	runAutoQCShiny.R: Interactive web application (Shiny app), to visualize data
 
 
-# <a name="head2"></a>A Prerequisites
+# <a name="head2"></a> Prerequisites
 
 
 *  The hosting computer needs to have a running version of [MaxQuant](http://www.coxdocs.org/doku.php?id=maxquant:common:download_and_installation) (version number should not matter, but needs to remain unchanged over the analyzing different raw files of same sample type).
@@ -52,7 +53,7 @@ It consists of three R-scripts:
 *	Client computer, from which data can be interactivally und simultanly inspected net to be connected in the same local area network and access the data via browser.
 
 
-# <a name="head3"></a>A Initialize folder structure and parameter files
+# <a name="head3"></a> Initialize folder structure and parameter files
 
 1.  Create an empty folder that will store all data created by the software on a local hard-drive. This folder will henceforth be referred to as "DataFolder"
 ```
@@ -83,7 +84,7 @@ D:/QC-software/
       ***Make sure to keep format as .txt and don’t change the file name.***
 
 
-## Setting up MaxQuant for each individual SampleType
+# <a name="head5"></a> Setting up MaxQuant for each SampleType
 
 1.  Go to the raw file type-specific sub-folder (e.g.“D:/QC-software/BSA”). It contains a dummy.raw file, an PeptidesOfInterest.txt file and an “borders.txt” file which need to be configured.
 
@@ -98,9 +99,9 @@ D:/QC-software/
     +	Close MaxQuant.
     
 
-# <a name="head4"></a>A Analyze first raw file
+# <a name="head5"></a> Analyze first raw file for each SampleType
 
-1. Drag and drop a first raw file in the dataFolder.
+1. Drag and drop a one raw file for each SampleType in the DataFolder.
 
 2. Open the AutoQC.R script in RStudio and run the code by hitting the "Run App" button
 
@@ -109,23 +110,27 @@ D:/QC-software/
 4. Track the raw file processing in the R-Studio console and wait until it's finished. The console should print the following statements:
 
 ```
-Found file Orbi1_160130_BSA_01*.raw
+Found file Orbi1_160130_BSA_01.raw
 Start maxquant analysis of file Orbi1_160130_BSA_01
 Finished MQ search file Orbi1_160130_BSA_01
 Finished writing QC-pdf for Orbi1_160130_BSA_01
 No more raw files to process; check again in 2 min
 ```
-5. 
-    
-## Configuring the PeptidesOfInterest.txt and borders.txt
 
-**These two files should be configured after the first analysis of a SampleType specific raw file:**
+# <a name="head5"></a> Setting up individual parameter files for each SampleType
 
+The SampleType folders contain two files which need to be configured, the "PeptidesOfInterest.txt" and the "borders.txt".
 
 1.  PeptidesOfInterest.txt:
 
     +	The PeptidesOfInterest.txt file contains peptides that can be manually controlled over all analyzed runs to check e.g. retention time, score or intensity of these peptides.
     +	To specify these peptides copy the Modified sequence and Charge from the evidence.txt file in that file.
+    
+    ```
+    evidence.txt files can be found after a first MaxQuant analysis of a raw file in the folder:
+    D:/QC-software/BSA/Orbi1_160130_BSA_01.raw
+    ```
+    
     +	Make sure to choose peptides that are well suited for your quality control (e.g. avoid peptides bearing Methionine which can be oxidized and therefore vary in intensity, choose peptides occurring in only one charge state…).
     +	Make sure to keep format as .txt and don’t change the file name.
 
