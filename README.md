@@ -2,12 +2,12 @@
 Automated Proteomics quality control package
 
 # Table of Contents
-1. [Package description](https://github.com/BerndHessling/ShinyQC/blob/readme_edits/README.md#package-description)
+1. [Package description](#head1234)
 2. [Prerequisites](# Prerequisites)
 3. [General setup AutoQCSoftware](# General setup AutoQCSoftware)
 4. [SampleType setup](# SampleType setup)
 
-# Package description
+# <a name="head1234"></a>A Package description
 
 
 This package allows the automatic analysis and visualization of proteomics standard samples. ID rates as well as certain parameter can be monitored over time for multiple LC-MS platforms in an interactive web application. The software supports any kind of peptide standard and is highly flexible.
