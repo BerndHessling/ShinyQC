@@ -33,9 +33,9 @@ It consists of three R-scripts:
 
 *	[R-Studio](https://www.rstudio.com/products/rstudio/download/) needs to be installed.
 
-*	For full functionality certain naming convention should be followed:
+*	Following naming conventions for your raw files must be:
 
-    +	MS raw files should start with a unique identifier for the instrument, e.g. if a lab has multiple LC-MS platforms they can be named:
+    +	MS raw files must **start with a unique identifier for the instrument**. Identifiers for different instruments must be of **same length**. If a lab has multiple LC-MS platforms they identifiers could be named like this:
 
         ```
         Orbi1_*.raw
@@ -43,14 +43,14 @@ It consists of three R-scripts:
         etc
         ```
 
-    + MS raw files need to have an unique identifier for the sample type, e.g.:
+    + MS raw files must have an **unique identifier for the sample type**. This can be placed anywhere in the raw file name. e.g.:
 
         ```
         Orbi1_*_BSA_*.raw.
         Orbi1_*_HeLaSTD_*.raw
         etc
         ```
-    +	Spaces and unconventional special character must be avoided in file names and folders used by the software.
+    + **Spaces and unconventional special character must be avoided in file names and folders used by the software (Including MaxQuant and fasta paths).**
 
 *	Client computer, from which data can be interactivally und simultanly inspected net to be connected in the same local area network and access the data via browser.
 
@@ -79,11 +79,11 @@ It consists of three R-scripts:
 
 5.	Configure the instrument.txt file in the DataFolder according to your instruments. The Abbreviation must match exactly to a unique identifier Tag in the .raw file name, which must be located at the beginning of the raw file. The full instrument name will be the one shown in plots.
 
-      ***Make sure to keep format as .txt and don’t change the file name.***
+      *Make sure to keep format as .txt and don’t change the file name.*
 
 6.	Configure the logBookChoices.txt file in the DataFolder according to your lab setup. Entry types and user names configured here can be selected for logbook entries in the software.
 
-      ***Make sure to keep format as .txt and don’t change the file name.***
+      *Make sure to keep format as .txt and don’t change the file name.*
 
 
 # <a name="head4"></a> Setting up MaxQuant for each SampleType
@@ -99,6 +99,8 @@ It consists of three R-scripts:
     +	Save the changed parameter file by the “Save parameters” button using default location and name.
     
     +	Close MaxQuant.
+    
+    *** Important: If you work with a low complex standard like BSA, which contains standard proteins, you should uncheck the "Include contaminats" optins in MaxQuant (located in "Global parameters"/"Sequences")
     
 
 # <a name="head5"></a> Analyze first raw file for each SampleType
@@ -135,7 +137,7 @@ The SampleType folders contain two files which need to be configured, the "Pepti
     D:/QC-software/BSA/Orbi1_160130_BSA_01
     ```
     
-    +	Make sure to choose peptides that are well suited for your quality control (e.g. avoid peptides bearing Methionine which can be oxidized and therefore vary in intensity, choose peptides occurring in only one charge state…).
+    +	Make sure to choose peptides that are well suited for your quality control (e.g. avoid peptides bearing Methionine which can be oxidized and therefore vary in intensity, choose peptides occurring in only one charge state, choose peptides covering a large area of your gradient,…).
     
     +	Make sure to keep format as .txt and don’t change the file name.
 
@@ -156,7 +158,7 @@ The SampleType folders contain two files which need to be configured, the "Pepti
 
 1. Open another instance of R-Studio and open the runAutoQCShiny.R.
 
-2. Run the app and specify the the SampleType folder,which should be inspected, in the first pop-up window.
+2. Run the app and specify the the SampleType folder, which should be inspected, in the first pop-up window.
 
     ```
     D:/QC-software/BSA
