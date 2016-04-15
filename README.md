@@ -107,7 +107,7 @@ It consists of three R-scripts:
     
     +	Close MaxQuant.
     
-    *** Important: If you work with a low complex standard like BSA, which contains standard proteins, you should uncheck the "Include contaminats" optins in MaxQuant (located in "Global parameters"/"Sequences")***
+    ***Important: If you work with a low complex standard like BSA, which contains standard proteins, you should uncheck the "Include contaminats" optins in MaxQuant (located in "Global parameters"/"Sequences")***
     
 
 # <a name="head5"></a> Analyze first raw file for each SampleType
