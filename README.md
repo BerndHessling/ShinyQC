@@ -36,13 +36,13 @@ It consists of three R-scripts:
 ## <a name="head2"></a>Prerequisites
 
 
-*  The hosting computer needs to have a running version of [MaxQuant](http://www.coxdocs.org/doku.php?id=maxquant:common:download_and_installation) (version number should not matter, but needs to remain unchanged over the analyzing different raw files of same sample type).
+*  The hosting computer needs to have a running version of [MaxQuant](http://www.coxdocs.org/doku.php?id=maxquant:common:download_and_installation) (version number should not matter).
 
 *	[R](https://cran.r-project.org/bin/windows/base/) needs to be installed (package was developed for version 3.2.4).
 
 *	[R-Studio](https://www.rstudio.com/products/rstudio/download/) needs to be installed.
 
-*	Following naming conventions for your raw files must be:
+*	Following naming conventions for your raw files must be matched:
 
     +	MS raw files must **start with a unique identifier for the instrument**. Identifiers for different instruments must be of **same length**. If a lab has multiple LC-MS platforms they identifiers could be named like this:
 
@@ -59,9 +59,9 @@ It consists of three R-scripts:
         Orbi1_*_HeLaSTD_*.raw
         etc
         ```
-    + **Spaces and unconventional special character must be avoided in file names and folders used by the software (Including MaxQuant and fasta paths).**
+    + **Spaces and unconventional special character must be avoided in file names and folders used by the software (Including MaxQuant path).**
 
-*	Client computer, from which data can be interactivally und simultanly inspected net to be connected in the same local area network and access the data via browser.
+*	Client computer, from which data can be interactivally und simultanly inspected net to be connected in the same local area network.
 
 
 ## <a name="head3"></a>Initialize folder structure and parameter files
@@ -116,9 +116,9 @@ It consists of three R-scripts:
 
 1. Drag and drop a one raw file for each SampleType in the DataFolder.
 
-2. Open the AutoQC.R script in RStudio and run the code by hitting the "Run App" button
+2. Open the AutoQC.R script in RStudio and run the code by hitting the "Run App" button.
 
-3. Specify the DataFolder in the pop-up window
+3. Specify the DataFolder in the pop-up window.
 
 4. Track the raw file processing in the R-Studio console and wait until it's finished. The console should print the following statements:
 
@@ -129,6 +129,9 @@ It consists of three R-scripts:
     Finished writing QC-pdf for Orbi1_160130_BSA_01
     No more raw files to process; check again in 2 min
     ```
+    
+    ***If any problem occurs during MaxQuant search, try a regular MaxQuant search without the script but same settings. If that worked out fine, change back to the dummy.raw file in the mqpar.xml file and save.***
+    
 
 ## <a name="head6"></a>Setting up individual parameter files for each SampleType
 
