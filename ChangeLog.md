@@ -1,6 +1,6 @@
 # ChangeLog:
 
-2016-04-20:
+*2016-04-20:*
 
 duplicated entries with same modified sequence, charge and raw.file are deleted before plotting in shiny app. Following code was added in runAutoQCShiny.R:
 
@@ -16,6 +16,6 @@ GEQC <- GEQC[!duplicated(
 
 ```
 
-2016-04-13:
+*2016-04-13:*
 
 first upload
