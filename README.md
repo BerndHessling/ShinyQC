@@ -22,7 +22,7 @@ Automated Proteomics quality control package
 ## <a name="head1"></a>Package description
 
 
-This package allows the automatic analysis and visualization of proteomics standard samples. ID rates as well as certain parameter can be monitored over time for multiple LC-MS platforms in an interactive web application. The software supports any kind of peptide standard and is highly flexible.
+This package allows the automatic analysis and visualization of proteomics standard samples. ID rates as well as certain parameter can be monitored over time for multiple LC-MS platforms in an interactive web application. In addition, a logbook function is implemented, that allows to track hardware on LC-MS systems like column exchanges or calibrations, which can also be visualized in plots. The software supports any kind of peptide standard and is highly flexible.
 
 It consists of three R-scripts: 
 
