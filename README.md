@@ -135,7 +135,7 @@ It consists of three R-scripts:
 
 ## <a name="head6"></a>Setting up individual parameter files for each SampleType
 
-The SampleType folders contain two files which need to be configured, the "PeptidesOfInterest.txt" and the "borders.txt".
+After analysing the first raw file of a SampleType, the SampleType folder contains two files which need to be configured, the "PeptidesOfInterest.txt" and the "borders.txt":
 
 1.  PeptidesOfInterest.txt:
 
