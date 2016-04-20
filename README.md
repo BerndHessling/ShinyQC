@@ -44,7 +44,7 @@ It consists of three R-scripts:
 
 *	Following naming conventions for your raw files must be matched:
 
-    +	MS raw files must **start with a unique identifier for the instrument**. Identifiers for different instruments must be of **same length**. If a lab has multiple LC-MS platforms they identifiers could be named like this:
+    +	MS raw files must **start with a unique identifier for the instrument**. Identifiers for different instruments must be of **same length**. If a lab has multiple LC-MS platforms, identifiers could be named like this:
 
         ```
         Orbi1_*.raw
