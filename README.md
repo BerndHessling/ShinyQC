@@ -61,7 +61,7 @@ It consists of three R-scripts:
         ```
     + **Spaces and unconventional special character must be avoided in file names and folders used by the software (Including MaxQuant path).**
 
-*	Client computer, from which data can be interactivally und simultanly inspected net to be connected in the same local area network.
+*	Client computers, from which data can be interactivally und simultaneously inspected need to be connected in the same local area network.
 
 
 ## <a name="head3"></a>Initialize folder structure and parameter files
