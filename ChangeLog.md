@@ -2,7 +2,8 @@
 
 **2016-04-20:**
 
-duplicated entries with same modified sequence, charge and raw.file are deleted before plotting in shiny app. Following code was added in runAutoQCShiny.R:
+duplicated entries with same modified sequence, charge and raw.file are deleted before plotting in shiny app.
+Following code was added in runAutoQCShiny.R:
 
 ```{r eval=TRUE, echo=FALSE}
 
