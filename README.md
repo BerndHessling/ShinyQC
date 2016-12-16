@@ -22,15 +22,17 @@ Automated Proteomics quality control package
 ## <a name="head1"></a>Package description
 
 
-This package allows the automatic analysis and visualization of proteomics standard samples. ID rates as well as certain parameter can be monitored over time for multiple LC-MS platforms in an interactive web application. In addition, a logbook function is implemented, that allows to track hardware on LC-MS systems like column exchanges or calibrations, which can also be visualized in plots. The software supports any kind of peptide standard and is highly flexible.
+This package allows the automatic analysis and visualization of proteomics standard samples. ID rates as well as certain parameter can be monitored over time for multiple LC-MS platforms in an interactive web application. In addition, a logbook function is implemented, that allows to track hardware changes on LC-MS systems like column exchanges or calibrations, which can also be visualized in plots. The software supports any kind of peptide standard and is highly flexible.
 
 It consists of three R-scripts: 
 
 1.  QC-setup.R: Setup scripts that creates the folders and files for the different workflows
 
-2.	AutoQC.R: Automatic MaxQuant analysis of MS raw files
+2.	autoQC.R: Automatic MaxQuant analysis of MS raw files
 
 3.	runAutoQCShiny.R: Interactive web application (Shiny app), to visualize data
+
+4.  reanalyzed.R: script to create new global data files when e.g. "peptides of interest have been changed"
 
 
 ## <a name="head2"></a>Prerequisites
@@ -59,7 +61,7 @@ It consists of three R-scripts:
         Orbi1_*_HeLaSTD_*.raw
         etc
         ```
-    + **Spaces and unconventional special character must be avoided in file names and folders used by the software (Including MaxQuant path).**
+    + **Spaces and unconventional special characters must be avoided in file names and folders used by the software (Including MaxQuant path).**
 
 
 
@@ -96,20 +98,15 @@ It consists of three R-scripts:
 
 ## <a name="head4"></a> Setting up MaxQuant for each SampleType
 
-1.  Go to the raw file type-specific sub-folder (e.g.“D:/QC-software/BSA”). It contains a dummy.raw file, an PeptidesOfInterest.txt file and an “borders.txt” file which need to be configured.
+The following steps need to be performed for every SampleType individually:
 
-2.	Create an MaxQuant parameter file by starting MaxQuant and follow the upcoming steps:
+1. As a first step run a regular MaxQuant search of your standard file with appropriate settings and uncheck the "Include contaminats" options in MaxQuant (located in "Global parameters/Sequences").
 
-    +	Load the “Dummy.raw” file from the workflow type folder.
-    
-    +	Configure the “Group-specific parameters” and “Global parameters” according to your Raw file type.
-    
-    +	Save the changed parameter file by the “Save parameters” button using default location and name.
-    
-    +	Close MaxQuant.
-    
-    ***Important: If you work with a low complex standard like BSA, which contains standard proteins, you should uncheck the "Include contaminats" options in MaxQuant (located in "Global parameters/Sequences")***
-    
+2. If everything worked out fine, load the created mqpar.xml file of that data analysis, remove the raw file and replace it by the "dummy.raw" file located in your SampleType folder.
+
+3. Save the changed parameter file by the “Save parameters” button using default location and name.
+
+4. Close MaxQuant
 
 ## <a name="head5"></a> Analyze first raw file for each SampleType
 
@@ -149,18 +146,6 @@ After analysing the first raw file of a SampleType, the SampleType folder contai
     ```
     
     +	Make sure to choose peptides that are well suited for your quality control (e.g. avoid peptides bearing Methionine which can be oxidized and therefore vary in intensity, choose peptides occurring in only one charge state, choose peptides covering a large area of your gradient,…).
-    
-    +	Make sure to keep format as .txt and don’t change the file name.
-
-2.	borders.txt
-
-    +	The borders.txt file shows all column names of the MaxQuant evidence.txt file as rows.
-    
-    +	If the “Include” column shows “TRUE” this data type can be plotted in the software.
-    
-    +	The three value columns (“High”, “Low” and “Optimal”) are optional values. If specified these values will be shown in the plot as vertical line in red (“Low” and “High”) or green (“optimal line”).
-    
-    +	As these values can differ between different instrument types the according instrument needs to be specified in the “Instrument” column.
     
     +	Make sure to keep format as .txt and don’t change the file name.
 
