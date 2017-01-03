@@ -14,9 +14,7 @@ Automated Proteomics quality control package
 
 [Analyze first raw file for each SampleType](#head5)
 
-[Setting up individual parameter files for each SampleType] (#head6)
-
-[Starting the Shiny app](#head7)
+[Starting the Shiny app](#head6)
 
 
 ## <a name="head1"></a>Package description
@@ -32,13 +30,13 @@ It consists of three R-scripts:
 
 3.	runAutoQCShiny.R: Interactive web application (Shiny app), to visualize data
 
-4.  reanalyzed.R: script to create new global data files when e.g. "peptides of interest have been changed"
+4.  reanalyze.R: script to create new global data files when e.g. "peptides of interest have been changed"
 
 
 ## <a name="head2"></a>Prerequisites
 
 
-*  The hosting computer needs to have a running version of [MaxQuant](http://www.coxdocs.org/doku.php?id=maxquant:common:download_and_installation) (version number should not matter).
+*  The hosting computer needs to have a running version of [MaxQuant](http://www.coxdocs.org/doku.php?id=maxquant:common:download_and_installation) (package is confirmed to be working with version 1.5.3.30 to version 1.5.6.5).
 
 *	[R](https://cran.r-project.org/bin/windows/base/) needs to be installed (package was developed for version 3.2.4).
 
@@ -49,16 +47,16 @@ It consists of three R-scripts:
     +	MS raw files must **start with a unique identifier for the instrument**. Identifiers for different instruments must be of **same length**. If a lab has multiple LC-MS platforms, identifiers could be named like this:
 
         ```
-        Orbi1_*.raw
-        Orbi2_*.raw
+        Orbi1*.raw
+        Orbi2*.raw
         etc
         ```
 
     + MS raw files must have an **unique identifier for the sample type**. This can be placed anywhere in the raw file name. e.g.:
 
         ```
-        Orbi1_*_BSA_*.raw.
-        Orbi1_*_HeLaSTD_*.raw
+        Orbi1*BSA*.raw.
+        Orbi1*HeLaSTD*.raw
         etc
         ```
     + **Spaces and unconventional special characters must be avoided in file names and folders used by the software (Including MaxQuant path).**
@@ -67,46 +65,49 @@ It consists of three R-scripts:
 
 ## <a name="head3"></a>Initialize folder structure and parameter files
 
-1.  Create an empty folder that will store all data created by the software on a local hard-drive. This folder will henceforth be referred to as "DataFolder"
-    ```
-    D:/QC-software/
-    ```
+1.  Unpack the QCSoftware.zip folder where the software should be stored. The created QCSoftware folder does contain the different R scripts and TemplateFiles folder.
   
-2.	Create subfolder for every sample type that should be analyzed by the software. The folder name is the identifier for sorting raw files in the correct subfoder and must match exactly to a unique identifier Tag in the .raw file name (see Prerequisites: raw file naming convention). These subfolders will henceforth be referred to as “SampleType folders”.
+2.	Create subfolder for every sample type that should be analyzed by the software in the QCSoftware folder. The folder name is the identifier for sorting raw files in the correct subfoder and must match exactly to a unique identifier Tag in the .raw file name (see Prerequisites: raw file naming convention). These subfolders will henceforth be referred to as “SampleType folders”.
       
     ```
     Orbi_*_BSA_*.raw
     ```
     needs a sample type folder named:
     ```
-    D:/QC-software/BSA/
+    D:/QCSoftware/BSA/
     ```
 
 
-3.	Unpack the zip folder in the DataFolder
+3.	Unpack the zip folder in the QCSoftware folder
 
-4.	Run the “QC-setup.R” script, which copies all needed files in all created subfolders.
+4.	Open the QC-setup.R script in RStudio and run the code by hitting the "Run App" button, which copies all needed files in all created subfolders.
 
 5.	Configure the instrument.txt file in the DataFolder according to your instruments. The Abbreviation must match exactly to a unique identifier Tag in the .raw file name, which must be located at the beginning of the raw file. The full instrument name will be the one shown in plots.
 
-      *Make sure to keep format as .txt and don’t change the file name.*
+      *Make sure to keep format as tab seperated txt and don’t change the file name.*
 
 6.	Configure the logBookChoices.txt file in the DataFolder according to your lab setup. Entry types and user names configured here can be selected for logbook entries in the software.
 
-      *Make sure to keep format as .txt and don’t change the file name.*
+      *Make sure to keep format as tab seperated txt and don’t change the file name.*
 
 
-## <a name="head4"></a> Setting up MaxQuant for each SampleType
+## <a name="head4"></a> Setting up each SampleType
 
-The following steps need to be performed for every SampleType individually:
+The following steps need to be performed once for every SampleType individually:
 
 1. As a first step run a regular MaxQuant search of your standard file with appropriate settings and uncheck the "Include contaminats" options in MaxQuant (located in "Global parameters/Sequences").
 
-2. If everything worked out fine, load the created mqpar.xml file of that data analysis, remove the raw file and replace it by the "dummy.raw" file located in your SampleType folder.
+2. Check if an appropriate number of peptides and proteins has been identified. If everything looks fine, load the created mqpar.xml file from the raw file containing folder of that data analysis, remove the raw file and replace it by the "dummy.raw" file located in your SampleType folder.
 
-3. Save the changed parameter file by the “Save parameters” button using default location and name.
+3. Save the changed parameter file by the “Save parameters” button using default location and name. MaxQuant software can now be closed.
 
-4. Close MaxQuant
+4. Select peptides from this initial MaxQuant analysis in the PeptidesOfInterest.txt file to check e.g. retention time, score or intensity of these peptides:
+
+    +   open evidence.txt output file in the txt folder from the initial search in a spreadsheet program like excel and select 3 to 6 peptides well suited for your quality control (e.g. choose peptides with decent intensity that should be consitently identified in upcoming analysis, choose peptides occurring in only one charge state, choose peptides covering a large area of your gradient, avoid peptides bearing Methionine which can be oxidized and therefore vary in intensity, …).
+    
+    +	To specify these peptides copy the Modified sequence and Charge from the evidence.txt file in PeptidesOfInterest.txt file.
+    
+    *Make sure to keep format as tab seperated txt and don’t change the file name.*
 
 ## <a name="head5"></a> Analyze first raw file for each SampleType
 
@@ -127,30 +128,9 @@ The following steps need to be performed for every SampleType individually:
     ```
     
     ***If any problem occurs during MaxQuant search, try a regular MaxQuant search without the script but same settings. If that worked out fine, change back to the dummy.raw file in the mqpar.xml file and save.***
-    
-
-## <a name="head6"></a>Setting up individual parameter files for each SampleType
-
-After analysing the first raw file of a SampleType, the SampleType folder contains two files which need to be configured, the "PeptidesOfInterest.txt" and the "borders.txt":
-
-1.  PeptidesOfInterest.txt:
-
-    +	The PeptidesOfInterest.txt file contains peptides that can be manually controlled over all analyzed runs to check e.g. retention time, score or intensity of these peptides.
-    
-    +	To specify these peptides copy the Modified sequence and Charge from the evidence.txt file in PeptidesOfInterest.txt file.
-    
-    +   evidence.txt files can be found after a first MaxQuant analysis of a raw file in a folder located in the corresponding SampleType folder named exactly like the original raw file. e.g.:
-    
-    ```
-    D:/QC-software/BSA/Orbi1_160130_BSA_01/
-    ```
-    
-    +	Make sure to choose peptides that are well suited for your quality control (e.g. avoid peptides bearing Methionine which can be oxidized and therefore vary in intensity, choose peptides occurring in only one charge state, choose peptides covering a large area of your gradient,…).
-    
-    +	Make sure to keep format as .txt and don’t change the file name.
 
 
-## <a name="head7"></a>Starting the Shiny app
+## <a name="head6"></a>Starting the Shiny app
 
 1. Open another instance of R-Studio and open the runAutoQCShiny.R.
 
