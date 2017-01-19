@@ -22,15 +22,19 @@ Automated Proteomics quality control package
 
 This package allows the automatic analysis and visualization of proteomics standard samples. ID rates as well as certain parameter can be monitored over time for multiple LC-MS platforms in an interactive web application. In addition, a logbook function is implemented, that allows to track hardware changes on LC-MS systems like column exchanges or calibrations, which can also be visualized in plots. The software supports any kind of peptide standard and is highly flexible.
 
-It consists of three R-scripts: 
+It consists of six R-scripts: 
 
 1.  QC-setup.R: Setup scripts that creates the folders and files for the different workflows
 
 2.	autoQC.R: Automatic MaxQuant analysis of MS raw files
 
-3.	runAutoQCShiny.R: Interactive web application (Shiny app), to visualize data
+3.  reanalyze.R: Script to create new global data files when e.g. "peptides of interest have been changed"
 
-4.  reanalyze.R: script to create new global data files when e.g. "peptides of interest have been changed"
+4.	runAutoQCShiny.R: Interactive web application (Shiny app), to visualize data
+
+5.  server.R: Server script for the siny app (does not need to be executed)
+
+6.  ui.R: User interface script for the shiny app (does not need to be executed)
 
 
 ## <a name="head2"></a>Prerequisites
@@ -148,11 +152,17 @@ The following steps need to be performed once for every SampleType individually:
     
 4. Interactively inspect your data and create logbook entries for the instruments.
 
-5. Connect the the software from other computer in the same LAN by calling the IP adress of the hosting pc and the port 3168 in browser.
+5. Connect from other computers by calling the IP adress of the hosting pc and the port 3168 in browser.
 
     ```
     //192.168.0.1:3168
     ```
     
-6. Update the data with newly analyzed raw files by hitting the "update app button" from host or client computers.
+6. Update the data with newly analyzed raw files by hitting the "update app" from host or client computers.
+
+7. If you have more than one sample type, repeat steps 1-6 and change the port number in the last line of the script to a unique number. E.g. port = 3167:
+
+    ```
+   runApp(parentDir, host="0.0.0.0",port=3167)
+    ```
 
