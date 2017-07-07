@@ -42,7 +42,7 @@ It consists of six R-scripts:
 
 *  The hosting computer needs to have a running version of [MaxQuant](http://www.coxdocs.org/doku.php?id=maxquant:common:download_and_installation) (package is confirmed to be working with version 1.5.2.8 to version 1.5.3.30).
 
-*	[R](https://cran.r-project.org/bin/windows/base/) needs to be installed (package was developed for version 3.2.4).
+*	[R](https://cran.r-project.org/bin/windows/base/) needs to be installed (package was developed for version 3.2.4 but should be running with every later version as well).
 
 *	[R-Studio](https://www.rstudio.com/products/rstudio/download/) needs to be installed.
 
