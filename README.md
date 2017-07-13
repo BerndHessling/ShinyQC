@@ -1,8 +1,6 @@
 # ShinyQC
 Automated Proteomics quality control package
 
-**The zip file containing the R-scripts is currently password protected, until the package is published**
-
 ## Table of Contents
 [Package description](#head1)
 
