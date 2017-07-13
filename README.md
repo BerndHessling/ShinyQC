@@ -16,6 +16,10 @@ Automated Proteomics quality control package
 
 [Starting the Shiny app](#head6)
 
+[Switching to new versions of the software](#head7)
+
+[Tips & Tricks](#head8)
+
 
 ## <a name="head1"></a>Package description
 
@@ -32,7 +36,7 @@ It consists of six R-scripts:
 
 4.	runAutoQCShiny.R: Interactive web application (Shiny app), to visualize data
 
-5.  server.R: Server script for the siny app (does not need to be executed)
+5.  server.R: Server script for the Shiny app (does not need to be executed)
 
 6.  ui.R: User interface script for the shiny app (does not need to be executed)
 
@@ -107,7 +111,7 @@ The following steps need to be performed once for every SampleType individually:
 
 4. Select peptides from this initial MaxQuant analysis in the PeptidesOfInterest.txt file to check e.g. retention time, score or intensity of these peptides:
 
-    +   open evidence.txt output file in the txt folder from the initial search in a spreadsheet program like excel and select 3 to 6 peptides well suited for your quality control (e.g. choose peptides with decent intensity that should be consitently identified in upcoming analysis, choose peptides occurring in only one charge state, choose peptides covering a large area of your gradient, avoid peptides bearing Methionine which can be oxidized and therefore vary in intensity, …).
+    +   open evidence.txt output file in the txt folder from the initial search in a spreadsheet program like excel and select 3 to 6 peptides well suited for your quality control (e.g. choose peptides with decent intensity that should be consistently identified in upcoming analysis, choose peptides occurring in only one charge state, choose peptides covering a large area of your gradient, avoid peptides bearing Methionine which can be oxidized and therefore vary in intensity, …).
     
     +	To specify these peptides copy the Modified sequence and Charge from the evidence.txt file in PeptidesOfInterest.txt file.
     
@@ -166,3 +170,12 @@ The following steps need to be performed once for every SampleType individually:
    runApp(parentDir, host="0.0.0.0",port=3167)
     ```
 
+## <a name="head7"></a>Switching to new versions of the software
+
+If a new version of ShinyQC is released this version can be applied by downloading the latest zip folder and replacing all R-script files used before with these new ones. To account for changed data formats the MaxQuant output files need to be reanalyzed with the reanalyze.r script for each data analysis type.
+
+## <a name="head8"></a>Tips & Tricks
+
+### Minimize data volume
+
+All raw files are deleted ones analyzed and only the MaxQuant txt output folder is stored for each analysis and renamed as the raw-file name. To minimize the used data volume one can specify in the MaxQuant parameter to spare some of the large output files in the txt folder. This can be done by unchecking all boxes in the "Tables" option under "Global parameters" of the MaxQuant GUI when setting up the MaxQuant parameter file for each workflow (specifically important for high complex standards).
