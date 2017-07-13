@@ -91,10 +91,12 @@ It consists of six R-scripts:
 5.	Configure the instrument.txt file in the DataFolder according to your instruments. The Abbreviation must match exactly to a unique identifier Tag in the .raw file name, which must be located at the beginning of the raw file. The full instrument name will be the one shown in plots.
 
       *Make sure to keep format as tab seperated txt and don’t change the file name.*
+      *Spaces and unconventional special characters must be avoided in the instrument name*
 
 6.	Configure the logBookChoices.txt file in the DataFolder according to your lab setup. Entry types and user names configured here can be selected for logbook entries in the software.
 
       *Make sure to keep format as tab seperated txt and don’t change the file name.*
+      
 
 
 ## <a name="head4"></a> Setting up each SampleType
